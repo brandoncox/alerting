@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: crash-looping-pod
+  namespace: ns1
+spec:
+  groups:
+  - name: crash-looping-pod
+    rules:
+    - alert: CrashLoopingPods
+      expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
