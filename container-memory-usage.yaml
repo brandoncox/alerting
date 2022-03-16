@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: 80-percent-container-memory
+  namespace: ns1
+spec:
+  groups:
+  - name: 80-percent-container-memory
+    rules:
+    - alert: HighContainerMemoryAlert
+      expr: (sum(container_memory_working_set_bytes{name!=""}) BY (instance, name) / sum(container_spec_memory_limit_bytes > 0) BY (instance, name) * 100) > 80
