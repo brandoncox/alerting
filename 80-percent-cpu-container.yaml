@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: 80-percent-cpu
+  namespace: ns1
+spec:
+  groups:
+  - name: 80-percent-cpu
+    rules:
+    - alert: HighCPUContainers
+      expr: (sum(rate(container_cpu_usage_seconds_total{name!=""}[3m])) BY (instance, name) * 100) > 80
