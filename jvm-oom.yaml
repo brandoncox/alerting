@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: jvm-out-of-memory
+  namespace: ns1
+spec:
+  groups:
+  - name: jvm-out-of-memory
+    rules:
+    - alert: JVMOutOfMemoryInNamespace
+      expr: (sum by (instance)(jvm_memory_used_bytes{area="heap"}) / sum by (instance)(jvm_memory_max_bytes{area="heap"})) * 100 > 80
+      for: 2m
