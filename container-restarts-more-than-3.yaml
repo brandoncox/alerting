@@ -9,3 +9,9 @@ spec:
     rules:
     - alert: ContainerRestartingMoreThan3Times
       expr: kube_pod_container_status_restarts_total > 3
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        summary: Container CPU usage (instance {{ $labels.instance }})
+        description: "Container CPU usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
