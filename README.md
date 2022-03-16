@@ -65,3 +65,7 @@ When this completes after a few minutes you should see a number of pods created 
 **remember to make sure filters are set correctly so that we are viewing user alerts that are firing**. 
 
 ![Firing Alerts](alertdashboard.png)
+
+## Resources
+
+https://awesome-prometheus-alerts.grep.to/
