@@ -1,4 +1,4 @@
-# Directions
+# README
 
 ## Create User Project and Application
 
@@ -61,6 +61,7 @@ When this completes after a few minutes you should see a number of pods created 
 ```
 
 5) Verify that Alert is firing via UI
- ** remember to make sure filters are set correctly so that we are viewing user alerts that are firing **
- 
+
+**remember to make sure filters are set correctly so that we are viewing user alerts that are firing**. 
+
 ![Firing Alerts](alertdashboard.png)
