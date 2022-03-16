@@ -13,5 +13,5 @@ spec:
       labels:
         severity: critical
       annotations:
-        summary: Container CPU usage (instance {{ $labels.instance }})
-        description: "Container CPU usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        summary: Detects pods that are continually restarting
+        description: "Fires when a container has attempted restarts more than 3 times"
