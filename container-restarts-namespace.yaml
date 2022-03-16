@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: container-restarts-exceeding-threshold
+  namespace: ns1
+spec:
+  groups:
+  - name: container-restarts-exceeding-threshold
+    rules:
+    - alert: ContainerRestartingAlert
+      expr: kube_pod_container_status_restarts_total{namespace="ns1"} > 3
