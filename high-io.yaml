@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: 80-percent-io-container
+  namespace: ns1
+spec:
+  groups:
+  - name: 80-percent-io-container
+    rules:
+    - alert: HighIOContainerAlert
+      expr: (sum(container_fs_io_current{name!=""}) BY (instance, name) * 100) > 80
