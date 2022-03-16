@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: container-volume-io
+  namespace: ns1
+spec:
+  groups:
+  - name: container-volume-io
+    rules:
+    - alert: HighVolumeIOContainerAlert
+      expr: (sum(container_fs_io_current{name!=""}) BY (instance, name) * 100) > 80
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        summary: Container Volume IO usage (instance {{ $labels.instance }})
+        description: "Container Volume IO usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
