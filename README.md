@@ -1,5 +1,7 @@
 # README
 
+This repository contains a collection of alerts that demo well on OpenShift
+
 ## Create User Project and Application
 
 Create project to test this alerts
